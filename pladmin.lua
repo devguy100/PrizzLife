@@ -9686,11 +9686,11 @@ task.spawn(function()
 		tasking()
 	end; 
 
-	--// h17s3 was here...
+	--// h17s3 is so sigma
 
 	local TPrefix = PLadmin_Settings and tostring(PLadmin_Settings.DefaultPrefix) or "?"
 
-	AddList("Invite: discord.gg/EjVQCdH6W6", "If you accidentally lose the gui, type /revert in chat", false)
+	AddList("Invite: https://discord.gg/yMyYPfmkBc", "If you accidentally lose the gui, type /revert in chat", false)
 	AddList("prefix [Prefix]", "Changes prefix (Default set to " .. TPrefix .. ")", false) --V
 	AddList("KILL CMDS", false, true) --KILL CMDS
 	AddList("kill / oof / die [plr,random,team,all]", "Kills selected player(s)", false) --V
