@@ -7061,9 +7061,9 @@ local OnCommand = function(text)
 		Sky.SkyboxBk = "http://www.roblox.com/asset/?id=3822390508"; Sky.SkyboxFt = "http://www.roblox.com/asset/?id=3822391392"; Sky.StarCount = 0; Sky.SkyboxDn = "http://www.roblox.com/asset/?id=3822392871"
 		Sky.SunTextureId = "rbxassetid://55054494"; Sky.SunAngularSize = 10; Sky.SkyboxRt = "http://www.roblox.com/asset/?id=3822390968"; Sky.MoonAngularSize = 9; Sky.Parent = game:GetService("Lighting")
 	elseif cm("advertise") or cm("script") then
-		Chat("SUPER OP PRISON LIFE SCRIPT WITH CRASHSERVER AND 200+ COMMANDS! > pastebin.com/xAx3MuKz")
+		Chat("SUPER OP PRISON LIFE SCRIPT WITH CRASHSERVER AND 200+ COMMANDS! > pastefy.app/Hqyie2Td")
 	elseif cm("whois") then
-		Chat("This pladmin script is created by riotscripter, Link: pastebin.com/xAx3MuKz")
+		Chat("This pladmin script is created by riotscripter, Link: pastefy.app/Hqyie2Td")
 		for i,v in pairs(Players:GetPlayers()) do
 			if Saved.Listing and (table.find(Saved.Listing.Owner, v.UserId) or v.UserId == 7779309460) then
 				Chat("The script creator is currently in the server: " .. v.Name .. " [" .. v.DisplayName .. "]")
