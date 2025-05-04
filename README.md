@@ -23,9 +23,9 @@ Misc executors: Fluxus, Solara PC, Swift, Other Mobile Executors, etc.
 
 ---
 
-### Discord:
+### Telegram:
 <div style="text-align: center;">
-  <a href="https://discord.gg/pnh2RyzR6W" target="_blank">Join our Discord</a>
+  <a href="https://t.me/Riotscripter" target="_blank">Join our Telegram</a>
 </div>
 
 ---
@@ -35,7 +35,7 @@ Misc executors: Fluxus, Solara PC, Swift, Other Mobile Executors, etc.
 Copy and paste the following script into your Roblox executor to load PrizzLife:
 
 ```lua
-loadstring(game:HttpGet('https://raw.githubusercontent.com/devguy100/PrizzLife/main/pladmin.lua'))()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Chaosscripter/devguy100-PrizzLife/main/pladmin.lua'))()
 ```
 
 ---
@@ -44,6 +44,8 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/devguy100/PrizzLife/m
 
 Credits to these people:
 
+- Creator
+- [Chaosscripter/Riotscripter](https://github.com/Chaosscripter)
 - Wrath Admin
 - [Infinity Yield](https://raw.githubusercontent.com/edgeiy/infiniteyield/master/source)
 - [Styx-Developer](https://github.com/Styx-Developer)
