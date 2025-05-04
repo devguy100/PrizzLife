@@ -1030,7 +1030,7 @@ end
 local VKeyPress = function(args, args2, waits)
 	if args2 == "Press" then
 		game:GetService("VirtualInputManager"):SendKeyEvent(true, args, false, game)
-		task.wait(.1)
+		task.wait(0.1)
 		game:GetService("VirtualInputManager"):SendKeyEvent(false, args, false, game)
 	elseif args2 == "Hold" then
 		game:GetService("VirtualInputManager"):SendKeyEvent(true, args, false, game)
@@ -1260,7 +1260,7 @@ local SpawnClientStuff = function(arg)
 								end
 							end
 						end
-						task.wait(.1)
+						task.wait(0.1)
 						attacking = false
 					end
 				end
@@ -1286,7 +1286,7 @@ local SpawnClientStuff = function(arg)
 			if not attacking then
 				attacking = true
 				animtrack:Play()
-				task.wait(.1)
+				task.wait(0.1)
 				attacking = false
 			end
 		end)
@@ -1629,7 +1629,7 @@ local BringCar = function(args, usedcar, policecar)
 	if args then
 		local destiny = args == LocalPlayer and LastPos or args.Character:FindFirstChild("Head").CFrame
 		Car:SetPrimaryPartCFrame(destiny)
-		wait(.2); LAction("unsit", true); LocTP(LastPos)
+		wait(0.2); LAction("unsit", true); LocTP(LastPos)
 	else
 		Car:SetPrimaryPartCFrame(LastPos)
 	end; States.IsBringing = false; Stopped = nil
@@ -1745,7 +1745,7 @@ local BringPL = function(BringFrom, Destination, isCFrame, donotusecar, dontbrea
 					local Destiny = Destination ~= LocalPlayer and Destination.Character:FindFirstChild("HumanoidRootPart").CFrame or LastPos
 					Car:SetPrimaryPartCFrame(Destiny)
 					if Destination ~= LocalPlayer and (donotusecar or not Settings.User.AutoDumpCar) then
-						wait(.2); LAction("unsit", true); LocTP(LastPos)
+						wait(0.2); LAction("unsit", true); LocTP(LastPos)
 					end
 				end; SavedArgs.BringSuccess = true
 				if Settings.User.AutoDumpCar and not donotusecar and not dontbreakyet then
@@ -1757,7 +1757,7 @@ local BringPL = function(BringFrom, Destination, isCFrame, donotusecar, dontbrea
 							Car.Body.VehicleSeat:Sit(LocalPlayer.Character:FindFirstChildOfClass("Humanoid"))
 						until LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit
 					end
-					Car.PrimaryPart = Car:FindFirstChild("RWD"); Car:SetPrimaryPartCFrame(CFrame.new(0, 9, 0)); wait(.2)
+					Car.PrimaryPart = Car:FindFirstChild("RWD"); Car:SetPrimaryPartCFrame(CFrame.new(0, 9, 0)); wait(0.2)
 					LAction("unsit", true); LocTP(LastPos)
 				end; States.IsBringing = false
 			end
@@ -1950,7 +1950,7 @@ local MakeCrim = function(args, savepos, tpback, ArrestLater)
 		if ArrestLater then
 			ArrestPL(args)
 		end;if tpback then
-			BringPL(args, SavedPositions.MakeCrimPlr, true); wait(.2)
+			BringPL(args, SavedPositions.MakeCrimPlr, true); wait(0.2)
 		end;if savepos then
 			if LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Sit then
 				LAction("unsit", true)
@@ -1964,7 +1964,7 @@ local SpamArrestPL = function(args)
 		local plr = args
 		local readytoarrest = nil
 		task.delay(0, function()
-			while States.AnnoyingPlayer and task.wait(.03) do
+			while States.AnnoyingPlayer and task.wait(0.03) do
 				if readytoarrest then
 					task.spawn(ArrestEve, plr)
 				end
@@ -2161,7 +2161,7 @@ local ShootKill = function(plr, amount, guntouse, hitpart)
 			CreateClientRay(EA)
 			Rstorage.ShootEvent:FireServer(EA, HasGun)
 			Rstorage.ReloadEvent:FireServer(HasGun)
-			task.wait(.1)
+			task.wait(0.1)
 			if plr.Character and plr.Character:FindFirstChildOfClass("Humanoid").Health == 0 then
 				break
 			end
@@ -2199,7 +2199,7 @@ local KillPL = function(plr, events, guntouse, WaitToDie)
 	task.spawn(function()
 		for i = 1, 6 do
 			Rstorage.ReloadEvent:FireServer(AK)
-			task.wait(.1)
+			task.wait(0.1)
 		end
 	end)
 	if plr.TeamColor == LocalPlayer.TeamColor then
@@ -2274,7 +2274,7 @@ local TableKill = function(tables)
 	task.spawn(function()
 		for i = 1, 10 do
 			Rstorage.ReloadEvent:FireServer(AK)
-			task.wait(.1)
+			task.wait(0.1)
 		end
 	end)
 	if sameteam then
@@ -2339,7 +2339,7 @@ local MultiKill = function(plrs, exclude)
 	task.spawn(function()
 		for i = 1, 20 do
 			Rstorage.ReloadEvent:FireServer(AK)
-			task.wait(.1)
+			task.wait(0.1)
 		end
 	end)
 	if neutralkill then
@@ -2371,7 +2371,7 @@ local GiveKeyCard = function(player)
 					TeamTo("guard")
 				else
 					LocalPlayer.CharacterAdded:Wait()
-				end; wait(.1)
+				end; wait(0.1)
 			until workspace.Prison_ITEMS.single:FindFirstChild("Key card"); LocTP(oldpos)
 			if oldteam == BrickColor.new("Bright orange") then
 				TeamTo("inmate")
@@ -2480,7 +2480,7 @@ local CrashMethod = function(typeofcrash, args)
 			end
 		end
 		task.spawn(function()
-			while task.wait(.4) do
+			while task.wait(0.4) do
 				pcall(function()
 					local new = LocalPlayer.Backpack:FindFirstChild("Remington 870") or LocalPlayer.Character:FindFirstChild("Remington 870")
 					if not new then
@@ -2519,7 +2519,7 @@ local CrashMethod = function(typeofcrash, args)
 		end
 	elseif typeofcrash == "serverlag" then
 		if States.LaggingServer then
-			States.LaggingServer = false; wait(.4)
+			States.LaggingServer = false; wait(0.4)
 		end; States.LaggingServer = true
 		task.spawn(function()
 			Gun("Remington 870")
@@ -2575,7 +2575,7 @@ local CrashMethod = function(typeofcrash, args)
 			};
 		end
 		task.spawn(function()
-			while task.wait(.03) do
+			while task.wait(0.03) do
 				pcall(function()
 					if not thegun then
 						Gun("AK-47")
@@ -2680,7 +2680,7 @@ local CrashMethod = function(typeofcrash, args)
 				Distance = 9e9;
 				RayObject = augh;
 			};
-		end; task.wait(.03)
+		end; task.wait(0.03)
 		for i,v in pairs(Players:GetPlayers()) do
 			if v.Character then
 				for _,vv in next, v.Character:GetChildren() do
@@ -2724,7 +2724,7 @@ local CrashMethod = function(typeofcrash, args)
 			Notif("Error", "An error occured while force-crashing.")
 		end; tempe = nil
 	elseif typeofcrash == "formidicrash" then
-		Notif("NOTICE!!! Connect to 5Ghz or ethernet", "Formidicrash may disconnect you because packet size is too large", 10); wait(.1)
+		Notif("NOTICE!!! Connect to 5Ghz or ethernet", "Formidicrash may disconnect you because packet size is too large", 10); wait(0.1)
 		if not SavedArgs.LoadedCrashEvents then
 			local Root = LocalPlayer.Character:WaitForChild("HumanoidRootPart")
 			Notif("Please wait...", "Loading crash events. (Client will be rate limited!)")
@@ -2945,7 +2945,7 @@ Threads = {
 			end
 			coroutine.wrap(function()
 				while States.AntiVelocity do
-					wait(.1)
+					wait(0.1)
 					parts = {}
 					for i,v in pairs(workspace:GetDescendants()) do
 						if v:IsA("BasePart") or v:IsA("Part") and not v:IsDescendantOf(LocalPlayer.Character) then
@@ -3062,7 +3062,7 @@ Threads = {
 			while States.ClickTeleport do task.wait()
 				if States.ClickTeleport then
 					SpawnClientStuff("clicktp")
-				else break end; LocalPlayer.CharacterAdded:Wait(); wait(.1); if LocalPlayer.TeamColor == BrickColor.new("Bright blue") then task.wait(1) end
+				else break end; LocalPlayer.CharacterAdded:Wait(); wait(0.1); if LocalPlayer.TeamColor == BrickColor.new("Bright blue") then task.wait(1) end
 			end
 		end)
 	end;
@@ -3095,7 +3095,7 @@ Threads = {
 					FakeCharacter.Name = "FakeCharacter"; FakeCharacter:FindFirstChildOfClass("Humanoid").DisplayName = "[INVISIBLE]"
 					SaveCamPos()
 					root.CFrame = CFrame.new(9e9, 9e9, 9e9)
-					SavedPositions.AutoRe = lastpos; wait(.4)
+					SavedPositions.AutoRe = lastpos; wait(0.4)
 					game:GetService("Workspace").CurrentCamera.CameraType = Enum.CameraType.Scriptable
 					Hbeat:Wait(); Rstep:Wait()
 					game:GetService("Workspace").CurrentCamera.CameraType = Enum.CameraType.Custom
@@ -3159,7 +3159,7 @@ Threads = {
 							if v and v.Character and v ~= LocalPlayer then
 								local meth = math.random(1, 15)
 								if meth == 6 then
-									KillPL(v); task.wait(.35)
+									KillPL(v); task.wait(0.35)
 								end
 							end
 						end
@@ -3175,7 +3175,7 @@ Threads = {
 			return
 		end; Saved.Thread.LoopTasePlayers = true
 		task.spawn(function()
-			while wait(.7) do
+			while wait(0.7) do
 				pcall(function()
 					if Loops.TaseTeams.All then
 						if LocalPlayer.TeamColor ~= BrickColor.new("Bright blue") and #Teams.Guards:GetPlayers() < 8 then
@@ -3325,7 +3325,7 @@ Tasks = {
 								end
 							end
 							if next(hostiles) then
-								TableKill(hostiles); task.wait(.3)
+								TableKill(hostiles); task.wait(0.3)
 							end; hostiles = nil
 						end)
 					end
@@ -3369,7 +3369,7 @@ Tasks = {
 								end
 							end
 							if next(annoyingbrats) then
-								TableKill(annoyingbrats); task.wait(.07)
+								TableKill(annoyingbrats); task.wait(0.07)
 							end; annoyingbrats = nil
 						end)
 					end
@@ -3624,7 +3624,7 @@ Tasks = {
 						end; wait(CPing()+0.15)
 					end; sounds = nil
 				end)
-				task.wait(.1); RTPing()
+				task.wait(0.1); RTPing()
 			end
 		end)
 	end;
@@ -3642,7 +3642,7 @@ Tasks = {
 							ring:Play(); punch:Play()
 						end
 					end
-				end); task.wait(.08)
+				end); task.wait(0.08)
 			end
 		end)
 	end;
@@ -3662,7 +3662,7 @@ Tasks = {
 							v.Parent = LocalPlayer.Character
 						end
 					end
-				end); task.wait(.1)
+				end); task.wait(0.1)
 			end; LAction("unequip")
 			for i,v in pairs(LocalPlayer.Backpack:GetChildren()) do
 				if v:IsA("Tool") then
@@ -3691,7 +3691,7 @@ Tasks = {
 					if v.Character and v.Character:FindFirstChildOfClass("Humanoid") then
 						if v.Character.Humanoid.Health == 0 then
 							Chat("!!! (" .. v.DisplayName .. ") HAS DIED! EVERYONE WILL DIE IN 0.5 SECOND(s)")
-							task.wait(.5)
+							task.wait(0.5)
 							task.spawn(MultiKill, Players, v); RTPing()
 							wait(10)
 						end
@@ -4124,7 +4124,7 @@ local OnCommand = function(text)
 				tempo = LocalPlayer.Character.HumanoidRootPart.CFrame
 				BringPL(DaPlayer, CFrame.new(0, -320, 0), true, true)
 			end)
-			task.wait(.1)
+			task.wait(0.1)
 			LAction("unsit", true)
 			States.AntiVoid = true
 			LocTP(tempo)
@@ -5112,7 +5112,7 @@ local OnCommand = function(text)
 			States.RemoveLeaderboard = true
 		elseif Args[2] == "off" or Args[2] == "false" then
 			States.RemoveLeaderboard = false
-		end;Notif("OK", "Toggled No-leaderboard to " .. tostring(States.RemoveLeaderboard) .. ".");wait(.1);game:GetService('StarterGui'):SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, not States.RemoveLeaderboard)
+		end;Notif("OK", "Toggled No-leaderboard to " .. tostring(States.RemoveLeaderboard) .. ".");wait(0.1);game:GetService('StarterGui'):SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, not States.RemoveLeaderboard)
 	elseif cm("mobilegui") or cm("mgui") then
 		local mbg = Saved.PLINIT:FindFirstChild("ActionFrame");mbg.Visible = not mbg.Visible
 		if Args[2] == "on" or Args[2] == "true" then
@@ -5382,9 +5382,9 @@ local OnCommand = function(text)
 				Chat("THE SERVER WILL CRASH IN 2 SECOND(S)")
 				wait(1.5)
 				Chat("THE SERVER WILL CRASH IN 1 SECOND(s)")
-				wait(.7)
+				wait(0.7)
 				Chat("SAY YOUR LAST GOODBYES BEFORE THE SERVER CRASHES!!!")
-				wait(.3)
+				wait(0.3)
 				CrashMethod("servercrash")
 			end)
 		else
@@ -5468,7 +5468,7 @@ local OnCommand = function(text)
 		end
 	elseif cm("unloopopendoors") or cm("unloopdoors") then
 		Saved.Thread.LoopOpenDoors = false
-		wait(.2)
+		wait(0.2)
 		if SavedArgs.OldTeamOpenDoor then
 			if SavedArgs.OldTeamOpenDoor == BrickColor.new("Bright orange") then
 				TeamTo("inmate")
@@ -5485,18 +5485,18 @@ local OnCommand = function(text)
 		end
 		if DaPlayer == LocalPlayer then
 			States.Viewing = false
-			task.wait(.1); Rstep:Wait()
+			task.wait(0.1); Rstep:Wait()
 			workspace.CurrentCamera.CameraSubject = LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
 			Notif("OK", "Stopped viewing")
 		elseif DaPlayer then
 			if States.Viewing then
 				States.Viewing = false
-				wait(.2)
+				wait(0.2)
 			end
 			States.Viewing = true
 			Notif("OK", "Now spectating " .. DaPlayer.Name .. ".")
 			task.spawn(function()
-				while States.Viewing do task.wait(.1)
+				while States.Viewing do task.wait(0.1)
 					if not Players:FindFirstChild(DaPlayer.Name) then
 						Notif("Player left.", "View is turned off.")
 						Saved.Thread.ViewPlayer = nil
@@ -5515,7 +5515,7 @@ local OnCommand = function(text)
 		end
 	elseif cm("unview") or cm("unspectate") then
 		States.Viewing = false
-		task.wait(.1)
+		task.wait(0.1)
 		Rstep:Wait()
 		workspace.CurrentCamera.CameraSubject = LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
 		Notif("OK", "Stopped viewing player.")
@@ -5809,7 +5809,7 @@ local OnCommand = function(text)
 						end
 					else
 						LAction("died"); LocalPlayer.CharacterAdded:Wait()
-					end; task.wait(.8)
+					end; task.wait(0.8)
 				end; States.Pooping = false
 			end)
 		else
@@ -6079,9 +6079,9 @@ local OnCommand = function(text)
 			task.spawn(function()
 				while States.SpammyCars do
 					if LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("Humanoid") and LocalPlayer.Character.Humanoid.Sit then
-						VKeyPress("Space", "Press");wait(.518)
+						VKeyPress("Space", "Press");wait(0.518)
 					end; pcall(BringCar)
-					wait(.2);LAction("unsit", true)
+					wait(0.2);LAction("unsit", true)
 				end
 			end)
 		else Notif("Error", "Already spawning cars."); end
@@ -6175,7 +6175,7 @@ local OnCommand = function(text)
 		Notif("OK", "Toggled infinite jump to " .. tostring(States.InfiniteJump) .. ".")
 	elseif cm("spin") then
 		if States.Spinning then
-			States.Spinning = false; wait(.04)
+			States.Spinning = false; wait(0.04)
 		end
 		local speed = Args[2] and tonumber(Args[2]) or 69
 		States.Spinning = true
@@ -6197,7 +6197,7 @@ local OnCommand = function(text)
 		Notif("OK", "Stopped spinning.")
 	elseif cm("orbit") then
 		if States.Orbiting then
-			States.Orbiting = false; wait(.04)
+			States.Orbiting = false; wait(0.04)
 		end
 		local DaPlayer = PlrFromArgs(Args[2], LocalPlayer)
 		local Speed = Args[3] and tonumber(Args[3]) or 2
@@ -6275,7 +6275,7 @@ local OnCommand = function(text)
 			return
 		elseif States.Flying and DaNumber then
 			States.Flying = false
-			wait(.2)
+			wait(0.2)
 			States.Flying = true
 			Flight(DaNumber)
 			return
@@ -6320,7 +6320,7 @@ local OnCommand = function(text)
 				PromptUser("Guards Team Full!", "Do you want to loopkill guards to make them leave?", 10, "Yes", "No", function()
 					repeat task.wait()
 						MultiKill(Teams.Guards)
-						task.wait(.35)
+						task.wait(0.35)
 					until not (#Teams.Guards:GetPlayers() >=8)
 				end)
 			end
@@ -6420,9 +6420,9 @@ local OnCommand = function(text)
 				stat.AmmoPerClip = math.huge
 				stat.StoredAmmo = math.huge
 				Tasks.ReloadGun(tool)
-				task.wait(.1)
+				task.wait(0.1)
 				LAction("unequip")
-				task.wait(.1)
+				task.wait(0.1)
 				LAction("equip", LocalPlayer.Backpack:FindFirstChild(tool.Name))
 				Notif("OK", "Applied infinite ammo to " .. tool.Name .. ".")
 			else
@@ -6446,9 +6446,9 @@ local OnCommand = function(text)
 				stat.AutoFire = true
 				stat.Bullets = 10
 				Tasks.ReloadGun(tool)
-				task.wait(.1)
+				task.wait(0.1)
 				LAction("unequip")
-				task.wait(.1)
+				task.wait(0.1)
 				LAction("equip", LocalPlayer.Backpack:FindFirstChild(tool.Name))
 				Notif("OK", "Applied all gun mods to " .. tool.Name .. ".")
 			else
@@ -6473,9 +6473,9 @@ local OnCommand = function(text)
 				local stat = require(tool.GunStates)
 				stat.FireRate = 0.01
 				stat.AutoFire = true
-				task.wait(.1)
+				task.wait(0.1)
 				LAction("unequip")
-				task.wait(.1)
+				task.wait(0.1)
 				LAction("equip", LocalPlayer.Backpack:FindFirstChild(tool.Name))
 				Notif("OK", "Applied faster fire rate to " .. tool.Name .. ".")
 			else
@@ -6495,7 +6495,7 @@ local OnCommand = function(text)
 		if LocalPlayer.Character:FindFirstChildWhichIsA("Tool") then
 			local temp = LocalPlayer.Character:FindFirstChildWhichIsA("Tool").Name
 			LAction("unequip")
-			wait(.2)
+			wait(0.2)
 			LAction("equip", LocalPlayer.Backpack:FindFirstChild(temp))
 		end
 	elseif cm("autofirerate") or cm("affr") then
@@ -6509,7 +6509,7 @@ local OnCommand = function(text)
 		if LocalPlayer.Character:FindFirstChildWhichIsA("Tool") then
 			local temp = LocalPlayer.Character:FindFirstChildWhichIsA("Tool").Name
 			LAction("unequip")
-			wait(.1)
+			wait(0.1)
 			LAction("equip", LocalPlayer.Backpack:FindFirstChild(temp))
 		end
 	elseif cm("autoinfammo") or cm("ainfa") then
@@ -6756,7 +6756,7 @@ local OnCommand = function(text)
 		elseif DaPlayer then
 			local tempo = LocalPlayer.Character.HumanoidRootPart.CFrame
 			BringPL(DaPlayer, CFrame.new(0, 9e9, 0), true, true)
-			task.wait(.6); SavedPositions.AutoRe = tempo
+			task.wait(0.6); SavedPositions.AutoRe = tempo
 			if LocalPlayer.TeamColor == BrickColor.new("Bright blue") then
 				TeamEve("Bright blue")
 			else
@@ -7042,19 +7042,19 @@ local OnCommand = function(text)
 		local danum = Args[2] and tonumber(Args[2]) or 69; local meth = math.random(0, danum); Chat(tostring(meth))
 	elseif cm("manginasal") then
 		if not Saved.Map_MangInamo then
-			Notif("Loading...", "Please wait patiently..."); Saved.Map_MangInamo = loadstring(game:HttpGet("https://raw.githubusercontent.com/devguy100/PrizzLife/main/Init/Maps/MangInasal.txt"))()
+			Notif("Loading...", "Please wait patiently..."); Saved.Map_MangInamo = loadstring(game:HttpGet("https://raw.githubusercontent.com/Chaosscripter/devguy100-PrizzLife/main/Init/Maps/MangInasal.txt"))()
 		end; LocTP(Saved.Map_MangInamo); Notif("OK", "Teleported to mang-inasal")
 	elseif cm("area51") then
 		if not Saved.Map_Area69 then
-			Notif("Loading...", "Please wait patiently..."); Saved.Map_Area69 = loadstring(game:HttpGet("https://raw.githubusercontent.com/devguy100/PrizzLife/main/Init/Maps/Area69.txt"))()
+			Notif("Loading...", "Please wait patiently..."); Saved.Map_Area69 = loadstring(game:HttpGet("https://raw.githubusercontent.com/Chaosscripter/devguy100-PrizzLife/main/Init/Maps/Area69.txt"))()
 		end; LocTP(Saved.Map_Area69); Notif("OK", "Teleported to area51")
 	elseif cm("amongus") then
 		if not Saved.Map_Amogus then
-			Notif("Loading...", "Please wait patiently..."); Saved.Map_Amogus = loadstring(game:HttpGet("https://raw.githubusercontent.com/devguy100/PrizzLife/main/Init/Maps/AmongSUS.txt"))()
+			Notif("Loading...", "Please wait patiently..."); Saved.Map_Amogus = loadstring(game:HttpGet("https://raw.githubusercontent.com/Chaosscripter/devguy100-PrizzLife/main/Init/Maps/AmongSUS.txt"))()
 		end; LocTP(Saved.Map_Amogus); Notif("OK", "Teleported to amogus")
 	elseif cm("mcdonalds") then
 		if not Saved.Map_Mcdonalds then
-			Notif("Loading...", "Please wait patiently..."); Saved.Map_Mcdonalds = loadstring(game:HttpGet("https://raw.githubusercontent.com/devguy100/PrizzLife/main/Init/Maps/Mcdonalds.txt"))()
+			Notif("Loading...", "Please wait patiently..."); Saved.Map_Mcdonalds = loadstring(game:HttpGet("https://raw.githubusercontent.com/Chaosscripter/devguy100-PrizzLife/main/Init/Maps/Mcdonalds.txt"))()
 		end; LocTP(Saved.Map_Mcdonalds); Notif("OK", "Teleported to mcdonalds")
 	elseif cm("minecraft") then
 		local Sky = Instance.new("Sky"); Sky.SkyboxUp = "http://www.roblox.com/asset/?id=3822392413"; Sky.MoonTextureId = "rbxassetid://1176450669"; Sky.SkyboxLf = "http://www.roblox.com/asset/?id=3822391866"
@@ -7215,7 +7215,7 @@ Connections.ChattedLocal = LocalPlayer.Chatted:Connect(function(t)
 		end); if not success then
 			dewarn("PrizzLife_Error: " .. tostring(errors))
 		end
-		task.wait(.6);chatdebounce = nil
+		task.wait(0.6);chatdebounce = nil
 	end
 end)
 ExecBar.FocusLost:Connect(function(enterPressed, inputObj)
@@ -7233,7 +7233,7 @@ ExecBar.FocusLost:Connect(function(enterPressed, inputObj)
 		if not success then
 			dewarn("PrizzLife_Error: " .. tostring(errors) .. ".")
 		end
-		task.wait(.2)
+		task.wait(0.2)
 		ExecBar.Text = ""
 	end
 end)
@@ -7909,7 +7909,7 @@ local OnRankedCommand = function(text, ranked)
 						local temo = States.AntiVoid; States.AntiVoid = false
 						local temp = LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame
 						BringPL(plr, CFrame.new(0, -320, 0), true, true)
-						task.wait(.1); States.AntiVoid = temo; temo = nil
+						task.wait(0.1); States.AntiVoid = temo; temo = nil
 						LAction("unsit", true); LocTP(temp)
 						rchat("OK! Void-killed " .. plr.Name .. ".")
 					end)
@@ -8358,7 +8358,7 @@ local OnRankedCommand = function(text, ranked)
 						Queue(function()
 							local tmp = LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame
 							BringPL(plr, CFrame.new(0, 9e9, 0), true, true)
-							wait(.2)
+							wait(0.2)
 							if LocalPlayer.TeamColor == BrickColor.new("Bright blue") then
 								SavedPositions.AutoRe = tmp
 								task.spawn(TeamEve, "Bright blue")
@@ -8424,7 +8424,7 @@ local OnRankedCommand = function(text, ranked)
 					local tmp = LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame
 					BringPL(plr, Teleports.nexus, true)
 					rchat("OK, Brought " .. plr.Name .. " to nexus.")
-					wait(.2)
+					wait(0.2)
 					LAction("unsit", true)
 					LocTP(tmp)
 				end)
@@ -8442,7 +8442,7 @@ local OnRankedCommand = function(text, ranked)
 					local tmp = LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame
 					BringPL(plr, Teleports.crimbase, true)
 					rchat("OK, Brought " .. plr.Name .. " to criminals base.")
-					wait(.2)
+					wait(0.2)
 					LAction("unsit", true)
 					LocTP(tmp)
 				end)
@@ -8460,7 +8460,7 @@ local OnRankedCommand = function(text, ranked)
 					local tmp = LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame
 					BringPL(plr, Teleports.armory, true)
 					rchat("OK, Brought " .. plr.Name .. " to the armory.")
-					wait(.2)
+					wait(0.2)
 					LAction("unsit", true)
 					LocTP(tmp)
 				end)
@@ -8478,7 +8478,7 @@ local OnRankedCommand = function(text, ranked)
 					local tmp = LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame
 					BringPL(plr, Teleports.yard, true)
 					rchat("OK, Brought " .. plr.Name .. " to the yard.")
-					wait(.2)
+					wait(0.2)
 					LAction("unsit", true)
 					LocTP(tmp)
 				end)
@@ -8496,7 +8496,7 @@ local OnRankedCommand = function(text, ranked)
 					local tmp = LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame
 					BringPL(plr, Teleports.roof, true)
 					rchat("OK, Brought " .. plr.Name .. " to the roof.")
-					wait(.2)
+					wait(0.2)
 					LAction("unsit", true)
 					LocTP(tmp)
 				end)
@@ -8514,7 +8514,7 @@ local OnRankedCommand = function(text, ranked)
 					local tmp = LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame
 					BringPL(plr, Teleports.cafe, true)
 					rchat("OK, Brought " .. plr.Name .. " to the cafeteria.")
-					wait(.2)
+					wait(0.2)
 					LAction("unsit", true)
 					LocTP(tmp)
 				end)
@@ -8532,7 +8532,7 @@ local OnRankedCommand = function(text, ranked)
 					local tmp = LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame
 					BringPL(plr, Teleports.ytower, true)
 					rchat("OK, Brought " .. plr.Name .. " to the yard tower.")
-					wait(.2)
+					wait(0.2)
 					LAction("unsit", true)
 					LocTP(tmp)
 				end)
@@ -8550,7 +8550,7 @@ local OnRankedCommand = function(text, ranked)
 					local tmp = LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame
 					BringPL(plr, Teleports.gtower, true)
 					rchat("OK, Brought " .. plr.Name .. " to the gate tower.")
-					wait(.2)
+					wait(0.2)
 					LAction("unsit", true)
 					LocTP(tmp)
 				end)
@@ -8650,7 +8650,7 @@ local OnRankedCommand = function(text, ranked)
 						Chat("2 SECOND(S)")
 						wait(1.5)
 						Chat("1 SECOND(S)")
-						wait(.5)
+						wait(0.5)
 						Chat("CRASHING!!!")
 						CrashMethod("servercrash")
 					end)
@@ -9420,7 +9420,7 @@ task.spawn(function()
 						task.delay(8,function()States.AntiVoid = true;end);States.AntiVoid = false
 					end
 					local tempos = LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame
-					BringPL(v,CFrame.new(0, -320, 0),true,true);wait(.2);LAction("unsit",true)
+					BringPL(v,CFrame.new(0, -320, 0),true,true);wait(0.2);LAction("unsit",true)
 					LocTP(CFrame.new(-190.722427,54.774929,1880.20374,0.007893865,6.46408438e-08,0.999968827,-3.42371038e-08,1,-6.43725926e-08,-0.999968827,-3.37278863e-08,0.007893865))
 					RTPing();RTPing();RTPing();RTPing();LocTP(tempos)
 				end
@@ -9436,7 +9436,7 @@ task.spawn(function()
 				end
 			end
 			if SavedPositions.TrapPlayerPos then
-				wait(.2); LAction("unsit", true); LocTP(SavedPositions.TrapPlayerPos); SavedPositions.TrapPlayerPos = nil
+				wait(0.2); LAction("unsit", true); LocTP(SavedPositions.TrapPlayerPos); SavedPositions.TrapPlayerPos = nil
 			end
 		end
 		if next(Loops.Voided) then
@@ -9445,7 +9445,7 @@ task.spawn(function()
 					if v.Character:FindFirstChild("Head") and v.Character.Head.Position.Y < 699 then
 						local tempos = LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame
 						BringPL(v, CFrame.new(0, 9e9, 0), true, true)
-						wait(.2); Tasks.Refresh(nil, tempos)
+						wait(0.2); Tasks.Refresh(nil, tempos)
 					end
 				end
 			end
@@ -10361,7 +10361,7 @@ task.spawn(function()
 	end
 
 	Saved.PLINIT = Instance.new("ScreenGui");Saved.PLINIT.Name = "PLADMIN_INITIALS";Saved.PLINIT.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui");Saved.PLINIT.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-	local data1, data2 = loadstring(game:HttpGet('https://raw.githubusercontent.com/devguy100/PrizzLife/main/Init/PL_TEAM_GUI'))()
+	local data1, data2 = loadstring(game:HttpGet('https://raw.githubusercontent.com/Chaosscripter/devguy100-PrizzLife/main/Init/PL_TEAM_GUI'))()
 	local TEAMs = data2; Saved.TeamFrame = data1
 	TEAMs.InmateButton.MouseButton1Click:Connect(function()
 		SavedPositions.AutoRe = nil; workspace.Remote.TeamEvent:FireServer("Bright orange")
@@ -10474,7 +10474,7 @@ Connections.JumpStamina = game:GetService("UserInputService").JumpRequest:Connec
 				LAction("jump")
 			end
 		end
-		wait(.1); JDebounce = false
+		wait(0.1); JDebounce = false
 	end
 end)
 
