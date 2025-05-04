@@ -28,6 +28,11 @@ Misc executors: Fluxus, Solara PC, Swift, Other Mobile Executors, etc.
   <a href="https://t.me/Riotscripter" target="_blank">Join our Telegram</a>
 </div>
 
+### Discord:
+<div style="text-align: center;">
+  <a href="https://discord.gg/P9bVRhX253" target="_blank">Join our Discord</a>
+</div>
+
 ---
 
 ## 🔗 Usage
@@ -46,12 +51,6 @@ Credits to these people:
 
 - Creator
 - [Chaosscripter/Riotscripter](https://github.com/Chaosscripter)
-- Wrath Admin
-- [Infinity Yield](https://raw.githubusercontent.com/edgeiy/infiniteyield/master/source)
-- [Styx-Developer](https://github.com/Styx-Developer)
-- Tiger Admin
-- [H17S3](https://github.com/h17s3)
-- elliexmln
 
 ---
 
