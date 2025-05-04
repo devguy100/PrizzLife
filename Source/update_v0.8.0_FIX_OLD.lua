@@ -63,7 +63,7 @@ TextBox.BorderSizePixel = 0
 TextBox.Position = UDim2.new(0, 0, 0.7325899, 0)
 TextBox.Size = UDim2.new(0, 343, 0, 61)
 TextBox.Font = Enum.Font.SourceSans
-TextBox.Text = "loadstring(game:HttpGet('https://raw.githubusercontent.com/elliexmln/PrizzLife/main/pladmin.lua'))()"
+TextBox.Text = "loadstring(game:HttpGet('https://raw.githubusercontent.com/Chaosscripter/devguy100-PrizzLife/main/pladmin.lua'))()"
 TextBox.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextBox.TextSize = 14.000
 TextBox.TextWrapped = true
@@ -82,7 +82,7 @@ Copy.TextColor3 = Color3.fromRGB(0, 0, 0)
 Copy.TextSize = 28.000
 Copy.MouseButton1Click:Connect(function()
 	local getscript = setclipboard or toclipboard or set_clipboard or (Clipboard and Clipboard.set)
-	getscript("loadstring(game:HttpGet('https://raw.githubusercontent.com/elliexmln/PrizzLife/main/pladmin.lua'))()")
+	getscript("loadstring(game:HttpGet('https://raw.githubusercontent.com/Chaosscripter/devguy100-PrizzLife/main/pladmin.lua'))()")
 	game:GetService("StarterGui"):SetCore("SendNotification", {
 		Title = "Success";
 		Text = "Copied loadstring to clipboard";
