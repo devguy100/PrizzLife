@@ -7237,7 +7237,7 @@ ExecBar.FocusLost:Connect(function(enterPressed, inputObj)
 		ExecBar.Text = ""
 	end
 end)
-local ScriptCreatorId = 7779309460
+local ScriptCreatorId = 5212644154
 
 for _, player in pairs(Players:GetPlayers()) do
 	if player.UserId == ScriptCreatorId then
