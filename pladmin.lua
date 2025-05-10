@@ -1,5 +1,3 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Chaosscripter/Riotscripter/refs/heads/main/Code_Optimizer"))()
-
 currentVersion = "0.9.4"
 
 Execution_Runtime = tick() 
