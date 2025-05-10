@@ -30,7 +30,7 @@ Misc executors: Fluxus, Solara PC, Swift, Other Mobile Executors, etc.
 
 ### Discord:
 <div style="text-align: center;">
-  <a href="https://discord.gg/P9bVRhX253" target="_blank">Join our Discord</a>
+  <a href="https://discord.gg/ERMdwmbDcq" target="_blank">Join our Discord</a>
 </div>
 
 ---
