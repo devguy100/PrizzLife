@@ -82,7 +82,7 @@ Copy.TextColor3 = Color3.fromRGB(0, 0, 0)
 Copy.TextSize = 28.000
 Copy.MouseButton1Click:Connect(function()
 	local getscript = setclipboard or toclipboard or set_clipboard or (Clipboard and Clipboard.set)
-	getscript("loadstring(game:HttpGet('https://raw.githubusercontent.com/Chaosscripter/devguy100-PrizzLife/main/pladmin.lua'))()")
+	getscript("loadstring(game:HttpGet('https://raw.githubusercontent.com/Chaosscripter/Riotscripter-PrizzLife/main/pladmin.lua'))()")
 	game:GetService("StarterGui"):SetCore("SendNotification", {
 		Title = "Success";
 		Text = "Copied loadstring to clipboard";
