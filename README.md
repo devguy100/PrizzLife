@@ -41,7 +41,7 @@ Misc executors: Fluxus, Solara PC, Swift, Other Mobile Executors, etc.
 Copy and paste the following script into your Roblox executor to load PrizzLife:
 
 ```lua
-loadstring(game:HttpGet('https://raw.githubusercontent.com/Chaosscripter/devguy100-PrizzLife/main/pladmin.lua'))()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Chaosscripter/Riotscripter-PrizzLife/main/pladmin.lua'))()
 ```
 
 ---
