@@ -7169,7 +7169,7 @@ local OnCommand = function(text)
 		end
 		print(1)
 	elseif cm("infyield") then
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/edgeiy/infiniteyield/master/source"))()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Chaosscripter/infiniteyield/master/source"))()
 		Notif("Success", "Inf Yield ran")
 	elseif cm("deletecmdslist") then
 		for i,v in pairs(CMDS_Frame:GetChildren()) do
