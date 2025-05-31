@@ -1,6 +1,6 @@
 Execution_Runtime = tick() 
 PLadmin_Settings = { 
-	DefaultPrefix = "."; 
+	DefaultPrefix = "?"; 
 	JoinNotify = false; 
 	AutoRespawn = true; --Automatically loadcharacter when dying 
 	AntiVoid = true; --Automatically teleport up when falling into void 
@@ -9930,6 +9930,7 @@ task.spawn(function()
 
 	AddList("MISC CMDS", false, true) -- MISCELLANEOUS
 	AddList("forcefield / ff", "Enables forcefield (Basically just refresh guards)", false) --V
+	AddList("infyield", "Execute Infinity Yield", false)
 	AddList("unforcefield / unff", "Disable forcefield", false) --V
 	AddList("autoguard / aguard [boolean]", "When killing innocents, automatically switch to guards team.", false) --V
 	AddList("spinnytools / spintool [boolean] [speed] [math.rad]", "Automatically make items you equip spin", false) --V
