@@ -1561,8 +1561,8 @@ API.KillPlayers = function(Team, BulletsAmount)
 			API.SwitchTeam(game.Teams.Inmates, true)
 		end
 		repeat RStep:Wait() until plr.Character and plr.Character:FindFirstChildOfClass("Humanoid")
-		API.GetGun("M9")
-		repeat RStep:Wait() API.GetGun("M9") Gun = plr.Backpack:FindFirstChild("M9") or plr.Character:FindFirstChild("M9") until (plr.Backpack:FindFirstChild("M9") or plr.Character:FindFirstChild("M9")) and plr.Character:FindFirstChildOfClass("Humanoid")
+		API.GetGun("AK-47")
+		repeat RStep:Wait() API.GetGun("AK-47") Gun = plr.Backpack:FindFirstChild("AK-47") or plr.Character:FindFirstChild("AK-47") until (plr.Backpack:FindFirstChild("AK-47") or plr.Character:FindFirstChild("AK-47")) and plr.Character:FindFirstChildOfClass("Humanoid")
 		-- Guards
 		for i,v in pairs(game.Teams.Guards:GetPlayers()) do
 			if v and v.Character and v.Character:FindFirstChildOfClass("Humanoid") and v.Character:FindFirstChildOfClass("Humanoid").Health > 1 and not v.Character:FindFirstChildOfClass("ForceField") and not table.find(Temp.Whitelisted,v.Name) then
@@ -1614,8 +1614,8 @@ API.KillPlayers = function(Team, BulletsAmount)
 		--//KILL INMATES
 		API.SwitchTeam(game.Teams.Criminals, true)
 		repeat RStep:Wait() until plr.Character and plr.Character:FindFirstChildOfClass("Humanoid")
-		API.GetGun("M9")
-		repeat RStep:Wait() API.GetGun("M9") Gun = plr.Backpack:FindFirstChild("M9") or plr.Character:FindFirstChild("M9") until (plr.Backpack:FindFirstChild("M9") or plr.Character:FindFirstChild("M9")) and plr.Character:FindFirstChildOfClass("Humanoid")
+		API.GetGun("AK-47")
+		repeat RStep:Wait() API.GetGun("AK-47") Gun = plr.Backpack:FindFirstChild("AK-47") or plr.Character:FindFirstChild("AK-47") until (plr.Backpack:FindFirstChild("AK-47") or plr.Character:FindFirstChild("AK-47")) and plr.Character:FindFirstChildOfClass("Humanoid")
 		for i,v in pairs(game.Teams.Inmates:GetPlayers()) do
 			if v and v.Character and v.Character:FindFirstChildOfClass("Humanoid") and v.Character:FindFirstChildOfClass("Humanoid").Health > 1 and not v.Character:FindFirstChildOfClass("ForceField") and not table.find(Temp.Whitelisted,v.Name) then
 				local TeamArgs = {}
@@ -1656,8 +1656,8 @@ API.KillPlayers = function(Team, BulletsAmount)
 			end
 		end
 		task.wait()
-		API.GetGun("M9")
-		repeat RStep:Wait() API.GetGun("M9") Gun = plr.Backpack:FindFirstChild("M9") or plr.Character:FindFirstChild("M9") until (plr.Backpack:FindFirstChild("M9") or plr.Character:FindFirstChild("M9")) and plr.Character:FindFirstChildOfClass("Humanoid")
+		API.GetGun("AK-47")
+		repeat RStep:Wait() API.GetGun("AK-47") Gun = plr.Backpack:FindFirstChild("AK-47") or plr.Character:FindFirstChild("AK-47") until (plr.Backpack:FindFirstChild("AK-47") or plr.Character:FindFirstChild("AK-47")) and plr.Character:FindFirstChildOfClass("Humanoid")
 		game:GetService("ReplicatedStorage"):WaitForChild("ShootEvent"):FireServer(Args, Gun)
 		game:GetService("ReplicatedStorage").ReloadEvent:FireServer(Gun)
 		task.wait()
