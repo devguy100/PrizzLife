@@ -6709,7 +6709,7 @@ end)()
 if plr.Character then
 	CharacterAdded(plr.Character)
 end
-API.Notif(("Welcome to Tiger admin! v%s forged by Riotscripter."):format(Settings.Version))
+API.Notif(("Welcome to Tiger admin! v%s forged by H17S3."):format(Settings.Version))
 if Temp.RemovedCommands>0 then
 	API.Notif(("Ass executor! %s commands removed!"):format(Temp.RemovedCommands))
 	if (identifyexecutor and identifyexecutor() or Executor or "Unknown"):lower()=="celery" then
