@@ -5549,28 +5549,31 @@ end)
 --// LOOPS
 Update_Loading_Percent(70)
 do
-	task.spawn(function()--/loopkillall
-		while wait(3.7) do
-			if Settings.Unloaded then break end
-			pcall(function()
-				if Toggles.LoopTaseAll then
-					API.Tase_Player("all")
-				end
-				if Toggles.LoopkillAll then
-					API.KillPlayers("all")
-				end
-				if Toggles.LoopkillGuards then
-					API.KillPlayers(game.Teams.Guards)
-				end
-				if Toggles.LoopkillInmates then
-					API.KillPlayers(game.Teams.Inmates)
-				end
-				if Toggles.LoopkillCriminals then
-					API.KillPlayers(game.Teams.Criminals)
-				end
-			end)
-		end
-	end)
+	task.spawn(function() --/loopkillall
+    while wait(3.7) do
+        if Settings.Unloaded then break end
+        pcall(function()
+            if Toggles.LoopTaseAll then
+                API.Tase_Player("all")
+            end
+            if Toggles.LoopkillAll then
+                API.KillPlayers("all")
+            end
+            if Toggles.LoopkillGuards then
+                API.KillPlayers(game.Teams.Guards)
+            end
+            if Toggles.LoopkillInmates then
+                API.KillPlayers(game.Teams.Inmates)
+            end
+            if Toggles.LoopkillCriminals then
+                API.KillPlayers(game.Teams.Criminals)
+            end
+            if Toggles.LoopkillNeutrals then
+                API.KillPlayers(game.Teams.Neutral)
+            end
+        end)
+    end
+end)
 	task.spawn(function()
 		while wait(.5) do
 			if Settings.Unloaded then
