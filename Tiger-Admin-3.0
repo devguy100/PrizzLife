@@ -1,5 +1,6 @@
 --// TIGER ADMIN V3
 -- Updated drawtool
+-- Improved Upon By Riotscripter
 if getgenv().TigerAdmin then game:GetService("StarterGui"):SetCore("SendNotification", {Title = "Tiger Admin",Text = "Can't load more than 1 Tiger admin use !unload command",Duration = 4,}) return end
 repeat task.wait() until (game:IsLoaded() and game:GetService("Players").LocalPlayer) and game:GetService("Players").LocalPlayer.Character
 
