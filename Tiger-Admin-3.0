@@ -1540,129 +1540,133 @@ API.Tase_Player = function(Target)
 	end
 end
 API.KillPlayers = function(Team, BulletsAmount)
-	local LastTeam = plr.Team
-	local Args = {}
-	local Gun = nil
-	if Team == "all" then
-		for i,v in pairs(game:GetService("Players"):GetPlayers()) do
-			if v and v.Character and v.Character:FindFirstChildOfClass("Humanoid") and v.Character:FindFirstChildOfClass("Humanoid").Health > 1 and not v.Character:FindFirstChildOfClass("ForceField") and not table.find(Temp.Whitelisted,v.Name) then
-				for i = 1,(BulletsAmount ~= nil and BulletsAmount or 8) do
-					Args[#Args + 1] = {
-						["RayObject"] = Ray.new(Vector3.new(), Vector3.new()),
-						["Distance"] = 0,
-						["Cframe"] = CFrame.new(),
-						["Hit"] = v.Character:FindFirstChild("Head"),
-					}
-				end
-			end
-		end
-		--//KILL GUARDS + CRIMINALS + Neutrals
-		if plr.Team ~= game.Teams.Inmates then
-			API.SwitchTeam(game.Teams.Inmates, true)
-		end
-		repeat RStep:Wait() until plr.Character and plr.Character:FindFirstChildOfClass("Humanoid")
-		API.GetGun("AK-47")
-		repeat RStep:Wait() API.GetGun("AK-47") Gun = plr.Backpack:FindFirstChild("AK-47") or plr.Character:FindFirstChild("AK-47") until (plr.Backpack:FindFirstChild("AK-47") or plr.Character:FindFirstChild("AK-47")) and plr.Character:FindFirstChildOfClass("Humanoid")
-		-- Guards
-		for i,v in pairs(game.Teams.Guards:GetPlayers()) do
-			if v and v.Character and v.Character:FindFirstChildOfClass("Humanoid") and v.Character:FindFirstChildOfClass("Humanoid").Health > 1 and not v.Character:FindFirstChildOfClass("ForceField") and not table.find(Temp.Whitelisted,v.Name) then
-				local TeamArgs = {}
-				for n = 1,(BulletsAmount ~= nil and BulletsAmount or 8) do
-					TeamArgs[#TeamArgs + 1] = {
-						["RayObject"] = Ray.new(Vector3.new(), Vector3.new()),
-						["Distance"] = 0,
-						["Cframe"] = CFrame.new(),
-						["Hit"] = v.Character:FindFirstChild("Head"),
-					}
-				end
-				game:GetService("ReplicatedStorage"):WaitForChild("ShootEvent"):FireServer(TeamArgs, Gun)
-				game:GetService("ReplicatedStorage").ReloadEvent:FireServer(Gun)
-			end
-		end
-		-- Criminals
-		for i,v in pairs(game.Teams.Criminals:GetPlayers()) do
-			if v and v.Character and v.Character:FindFirstChildOfClass("Humanoid") and v.Character:FindFirstChildOfClass("Humanoid").Health > 1 and not v.Character:FindFirstChildOfClass("ForceField") and not table.find(Temp.Whitelisted,v.Name) then
-				local TeamArgs = {}
-				for n = 1,(BulletsAmount ~= nil and BulletsAmount or 8) do
-					TeamArgs[#TeamArgs + 1] = {
-						["RayObject"] = Ray.new(Vector3.new(), Vector3.new()),
-						["Distance"] = 0,
-						["Cframe"] = CFrame.new(),
-						["Hit"] = v.Character:FindFirstChild("Head"),
-					}
-				end
-				game:GetService("ReplicatedStorage"):WaitForChild("ShootEvent"):FireServer(TeamArgs, Gun)
-				game:GetService("ReplicatedStorage").ReloadEvent:FireServer(Gun)
-			end
-		end
-		--//KILL NEUTRALS
-		for i,v in pairs(game.Teams.Neutral:GetPlayers()) do
-			if v and v.Character and v.Character:FindFirstChildOfClass("Humanoid") and v.Character:FindFirstChildOfClass("Humanoid").Health > 1 and not v.Character:FindFirstChildOfClass("ForceField") and not table.find(Temp.Whitelisted,v.Name) then
-				local TeamArgs = {}
-				for n = 1,(BulletsAmount ~= nil and BulletsAmount or 8) do
-					TeamArgs[#TeamArgs + 1] = {
-						["RayObject"] = Ray.new(Vector3.new(), Vector3.new()),
-						["Distance"] = 0,
-						["Cframe"] = CFrame.new(),
-						["Hit"] = v.Character:FindFirstChild("Head"),
-					}
-				end
-				game:GetService("ReplicatedStorage"):WaitForChild("ShootEvent"):FireServer(TeamArgs, Gun)
-				game:GetService("ReplicatedStorage").ReloadEvent:FireServer(Gun)
-			end
-		end
-		--//KILL INMATES
-		API.SwitchTeam(game.Teams.Criminals, true)
-		repeat RStep:Wait() until plr.Character and plr.Character:FindFirstChildOfClass("Humanoid")
-		API.GetGun("AK-47")
-		repeat RStep:Wait() API.GetGun("AK-47") Gun = plr.Backpack:FindFirstChild("AK-47") or plr.Character:FindFirstChild("AK-47") until (plr.Backpack:FindFirstChild("AK-47") or plr.Character:FindFirstChild("AK-47")) and plr.Character:FindFirstChildOfClass("Humanoid")
-		for i,v in pairs(game.Teams.Inmates:GetPlayers()) do
-			if v and v.Character and v.Character:FindFirstChildOfClass("Humanoid") and v.Character:FindFirstChildOfClass("Humanoid").Health > 1 and not v.Character:FindFirstChildOfClass("ForceField") and not table.find(Temp.Whitelisted,v.Name) then
-				local TeamArgs = {}
-				for n = 1,(BulletsAmount ~= nil and BulletsAmount or 8) do
-					TeamArgs[#TeamArgs + 1] = {
-						["RayObject"] = Ray.new(Vector3.new(), Vector3.new()),
-						["Distance"] = 0,
-						["Cframe"] = CFrame.new(),
-						["Hit"] = v.Character:FindFirstChild("Head"),
-					}
-				end
-				game:GetService("ReplicatedStorage"):WaitForChild("ShootEvent"):FireServer(TeamArgs, Gun)
-				game:GetService("ReplicatedStorage").ReloadEvent:FireServer(Gun)
-			end
-		end
-		task.spawn(function()
-			wait()
-			API.SwitchTeam(LastTeam, true)
-		end)
-	else
-		for i,v in pairs(Team:GetPlayers()) do
-			if v and v.Character and v.Character:FindFirstChildOfClass("Humanoid") and v.Character:FindFirstChildOfClass("Humanoid").Health > 1 and not v.Character:FindFirstChildOfClass("ForceField") and not table.find(Temp.Whitelisted,v.Name) then
-				for i = 1,6 do
-					Args[#Args + 1] = {
-						["RayObject"] = Ray.new(Vector3.new(), Vector3.new()),
-						["Distance"] = 0,
-						["Cframe"] = CFrame.new(),
-						["Hit"] = v.Character:FindFirstChild("Head"),
-					}
-				end
-			end
-		end
-		if Team == plr.Team then
-			if Team ~= game.Teams.Criminals then
-				API.SwitchTeam(game.Teams.Criminals, true)
-			elseif Team == game.Teams.Criminals then
-				API.SwitchTeam(game.Teams.Inmates, true)
-			end
-		end
-		task.wait()
-		API.GetGun("AK-47")
-		repeat RStep:Wait() API.GetGun("AK-47") Gun = plr.Backpack:FindFirstChild("AK-47") or plr.Character:FindFirstChild("AK-47") until (plr.Backpack:FindFirstChild("AK-47") or plr.Character:FindFirstChild("AK-47")) and plr.Character:FindFirstChildOfClass("Humanoid")
-		game:GetService("ReplicatedStorage"):WaitForChild("ShootEvent"):FireServer(Args, Gun)
-		game:GetService("ReplicatedStorage").ReloadEvent:FireServer(Gun)
-		task.wait()
-		API.SwitchTeam(LastTeam, true)
-	end
+    local LastTeam = plr.Team
+    local Args = {}
+    local Gun = nil
+    if Team == "all" then
+        for i, v in pairs(game:GetService("Players"):GetPlayers()) do
+            if v and v.Character and v.Character:FindFirstChildOfClass("Humanoid") and v.Character:FindFirstChildOfClass("Humanoid").Health > 1 and not v.Character:FindFirstChildOfClass("ForceField") and not table.find(Temp.Whitelisted, v.Name) then
+                for i = 1, (BulletsAmount ~= nil and BulletsAmount or 8) do
+                    Args[#Args + 1] = {
+                        ["RayObject"] = Ray.new(Vector3.new(), Vector3.new()),
+                        ["Distance"] = 0,
+                        ["Cframe"] = CFrame.new(),
+                        ["Hit"] = v.Character:FindFirstChild("Head"),
+                    }
+                end
+            end
+        end
+        if plr.Team ~= game.Teams.Inmates then
+            API.SwitchTeam(game.Teams.Inmates, true)
+        end
+        repeat RStep:Wait() until plr.Character and plr.Character:FindFirstChildOfClass("Humanoid")
+        API.GetGun("Remington 870")
+        repeat RStep:Wait()
+            API.GetGun("Remington 870")
+            Gun = plr.Backpack:FindFirstChild("Remington 870") or plr.Character:FindFirstChild("Remington 870")
+        until (plr.Backpack:FindFirstChild("Remington 870") or plr.Character:FindFirstChild("Remington 870")) and plr.Character:FindFirstChildOfClass("Humanoid")
+        for i, v in pairs(game.Teams.Guards:GetPlayers()) do
+            if v and v.Character and v.Character:FindFirstChildOfClass("Humanoid") and v.Character:FindFirstChildOfClass("Humanoid").Health > 1 and not v.Character:FindFirstChildOfClass("ForceField") and not table.find(Temp.Whitelisted, v.Name) then
+                local TeamArgs = {}
+                for n = 1, (BulletsAmount ~= nil and BulletsAmount or 8) do
+                    TeamArgs[#TeamArgs + 1] = {
+                        ["RayObject"] = Ray.new(Vector3.new(), Vector3.new()),
+                        ["Distance"] = 0,
+                        ["Cframe"] = CFrame.new(),
+                        ["Hit"] = v.Character:FindFirstChild("Head"),
+                    }
+                end
+                game:GetService("ReplicatedStorage"):WaitForChild("ShootEvent"):FireServer(TeamArgs, Gun)
+                game:GetService("ReplicatedStorage").ReloadEvent:FireServer(Gun)
+            end
+        end
+        for i, v in pairs(game.Teams.Criminals:GetPlayers()) do
+            if v and v.Character and v.Character:FindFirstChildOfClass("Humanoid") and v.Character:FindFirstChildOfClass("Humanoid").Health > 1 and not v.Character:FindFirstChildOfClass("ForceField") and not table.find(Temp.Whitelisted, v.Name) then
+                local TeamArgs = {}
+                for n = 1, (BulletsAmount ~= nil and BulletsAmount or 8) do
+                    TeamArgs[#TeamArgs + 1] = {
+                        ["RayObject"] = Ray.new(Vector3.new(), Vector3.new()),
+                        ["Distance"] = 0,
+                        ["Cframe"] = CFrame.new(),
+                        ["Hit"] = v.Character:FindFirstChild("Head"),
+                    }
+                end
+                game:GetService("ReplicatedStorage"):WaitForChild("ShootEvent"):FireServer(TeamArgs, Gun)
+                game:GetService("ReplicatedStorage").ReloadEvent:FireServer(Gun)
+            end
+        end
+        for i, v in pairs(game.Teams.Neutral:GetPlayers()) do
+            if v and v.Character and v.Character:FindFirstChildOfClass("Humanoid") and v.Character:FindFirstChildOfClass("Humanoid").Health > 1 and not v.Character:FindFirstChildOfClass("ForceField") and not table.find(Temp.Whitelisted, v.Name) then
+                local TeamArgs = {}
+                for n = 1, (BulletsAmount ~= nil and BulletsAmount or 8) do
+                    TeamArgs[#TeamArgs + 1] = {
+                        ["RayObject"] = Ray.new(Vector3.new(), Vector3.new()),
+                        ["Distance"] = 0,
+                        ["Cframe"] = CFrame.new(),
+                        ["Hit"] = v.Character:FindFirstChild("Head"),
+                    }
+                end
+                game:GetService("ReplicatedStorage"):WaitForChild("ShootEvent"):FireServer(TeamArgs, Gun)
+                game:GetService("ReplicatedStorage").ReloadEvent:FireServer(Gun)
+            end
+        end
+        API.SwitchTeam(game.Teams.Criminals, true)
+        repeat RStep:Wait() until plr.Character and plr.Character:FindFirstChildOfClass("Humanoid")
+        API.GetGun("Remington 870")
+        repeat RStep:Wait()
+            API.GetGun("Remington 870")
+            Gun = plr.Backpack:FindFirstChild("Remington 870") or plr.Character:FindFirstChild("Remington 870")
+        until (plr.Backpack:FindFirstChild("Remington 870") or plr.Character:FindFirstChild("Remington 870")) and plr.Character:FindFirstChildOfClass("Humanoid")
+        for i, v in pairs(game.Teams.Inmates:GetPlayers()) do
+            if v and v.Character and v.Character:FindFirstChildOfClass("Humanoid") and v.Character:FindFirstChildOfClass("Humanoid").Health > 1 and not v.Character:FindFirstChildOfClass("ForceField") and not table.find(Temp.Whitelisted, v.Name) then
+                local TeamArgs = {}
+                for n = 1, (BulletsAmount ~= nil and BulletsAmount or 8) do
+                    TeamArgs[#TeamArgs + 1] = {
+                        ["RayObject"] = Ray.new(Vector3.new(), Vector3.new()),
+                        ["Distance"] = 0,
+                        ["Cframe"] = CFrame.new(),
+                        ["Hit"] = v.Character:FindFirstChild("Head"),
+                    }
+                end
+                game:GetService("ReplicatedStorage"):WaitForChild("ShootEvent"):FireServer(TeamArgs, Gun)
+                game:GetService("ReplicatedStorage").ReloadEvent:FireServer(Gun)
+            end
+        end
+        task.spawn(function()
+            wait()
+            API.SwitchTeam(LastTeam, true)
+        end)
+    else
+        for i, v in pairs(Team:GetPlayers()) do
+            if v and v.Character and v.Character:FindFirstChildOfClass("Humanoid") and v.Character:FindFirstChildOfClass("Humanoid").Health > 1 and not v.Character:FindFirstChildOfClass("ForceField") and not table.find(Temp.Whitelisted, v.Name) then
+                for i = 1, 6 do
+                    Args[#Args + 1] = {
+                        ["RayObject"] = Ray.new(Vector3.new(), Vector3.new()),
+                        ["Distance"] = 0,
+                        ["Cframe"] = CFrame.new(),
+                        ["Hit"] = v.Character:FindFirstChild("Head"),
+                    }
+                end
+            end
+        end
+        if Team == plr.Team then
+            if Team ~= game.Teams.Criminals then
+                API.SwitchTeam(game.Teams.Criminals, true)
+            elseif Team == game.Teams.Criminals then
+                API.SwitchTeam(game.Teams.Inmates, true)
+            end
+        end
+        task.wait()
+        API.GetGun("Remington 870")
+        repeat RStep:Wait()
+            API.GetGun("Remington 870")
+            Gun = plr.Backpack:FindFirstChild("Remington 870") or plr.Character:FindFirstChild("Remington 870")
+        until (plr.Backpack:FindFirstChild("Remington 870") or plr.Character:FindFirstChild("Remington 870")) and plr.Character:FindFirstChildOfClass("Humanoid")
+        game:GetService("ReplicatedStorage"):WaitForChild("ShootEvent"):FireServer(Args, Gun)
+        game:GetService("ReplicatedStorage").ReloadEvent:FireServer(Gun)
+        task.wait()
+        API.SwitchTeam(LastTeam, true)
+    end
 end
 
 API.SwitchTeam = function(TeamPath,DeleteForceField,AutoRespawn,IsRefresh,RespawnAt)
