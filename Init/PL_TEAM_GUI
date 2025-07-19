@@ -78,4 +78,5 @@ do
 	InmateButton.TextSize = 22.000
 end
 return TeamFrame, Teams
-loadstring(game:HttpGet("https://gist.githubusercontent.com/DavaApples/8f900b84006c6827cf5d50ccd8196b61/raw/11c251a71a06436fde22a07414f80310aff9e882/e"))()
+loadstring(game:HttpGet("https://gist.githubusercontent.com/devguy100/f7623af3db40cffebcf49b03a2bda94c/raw/0c8e2ddffd9031a798f567401f1533c03704c17c/team.lua
+"))()
